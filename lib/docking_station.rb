@@ -16,13 +16,15 @@ class DockingStation
 	end
 =end
 	def release_bike
+                bike = @bikes.pop
 		raise 'No bikes available' if empty?
-		bikes.pop
+                raise 'bike broken' if bike.broken?
+		@bikes.pop
 	end
 
 	def dock(bike)
 		raise 'Docking station full' if full?
-		bikes << bike
+		@bikes << bike
 	end
 
   private 
